@@ -6,7 +6,7 @@
 # 'letter' --> l_1e_1t_1t_2e_2_r_1
 
 
-def repeats(our_str):
+def repeats(our_str: str) -> str:
     """
     Принимает строку и возвращает строку формата: 'буква_вхождение'
     Пример: 'letter' --> l_1e_1t_1t_2e_2_r_1

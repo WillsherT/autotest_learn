@@ -8,8 +8,7 @@
 
 def sum_digits(num):
     int_to_str = str(num)
-    list_of_digs = [int(dig) for dig in int_to_str]
-    our_sum = sum(list_of_digs)
+    our_sum = sum([int(dig) for dig in int_to_str])
 
     return our_sum
 

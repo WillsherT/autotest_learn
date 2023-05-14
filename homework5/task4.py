@@ -13,7 +13,7 @@
 # курс --> 6 (к=2, у=2, р=1, с=1)
 
 
-def scrabble(word):
+def scrabble(word: str) -> int:
     """
     Считаем очки за составленные слова для игры scrabble
     :param word: получаем слово.

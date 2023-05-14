@@ -4,11 +4,11 @@
 # (1, 2, 3, 4, 5, 6, 7, 8, 9, 0)  => "(123) 456-7890"
 
 def create_phone_number(num_tuple):
-    tuple_of_str = ''.join([str(dig) for dig in num_tuple])
+    tuple_to_str = ''.join([str(dig) for dig in num_tuple])
 
-    mobile_code = tuple_of_str[:3]
-    first_part_number = tuple_of_str[3:6]
-    last_part_number = tuple_of_str[6:]
+    mobile_code = tuple_to_str[:3]
+    first_part_number = tuple_to_str[3:6]
+    last_part_number = tuple_to_str[6:]
 
     str_phone = f"({mobile_code}) {first_part_number}-{last_part_number}"
     return str_phone

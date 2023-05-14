@@ -10,7 +10,7 @@
 # 2008 --> MMVIII
 
 
-def to_roman(val):
+def to_roman(val: int) -> str:
     """
     Преобразуем арабские числа в римские.
     :param val: Получаем арабское число.

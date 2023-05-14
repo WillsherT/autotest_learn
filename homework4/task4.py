@@ -12,14 +12,14 @@ def multiplication_chain(num):
 
     while num > 9:
         int_to_str = str(num)
-        list_of_digs = [int(dig) for dig in int_to_str]
+        list_of_digits = [int(digit) for digit in int_to_str]
 
-        result_of_mult = 1
-        for factor in list_of_digs:
-            result_of_mult *= factor
+        result_of_multy = 1
+        for factor in list_of_digits:
+            result_of_multy *= factor
 
         count_multy += 1
-        num = result_of_mult
+        num = result_of_multy
 
     return count_multy
 

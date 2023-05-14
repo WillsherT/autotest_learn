@@ -17,6 +17,7 @@ def max_division_by_3(num):
     sum_of_digs = 0
     for digit in new_num:
         sum_of_digs += int(digit)
+
     inc = 3 - sum_of_digs % 3
     for i in range(len(new_num)):
         if int(new_num[i]) + inc <= 9:
