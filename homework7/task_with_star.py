@@ -45,7 +45,7 @@ class RomanNums:
         arab_str = str(self.from_roman())
         p1 = 0
         p2 = len(arab_str) - 1
-        while p1 < p2:
+        while p1 <= p2:
             if arab_str[p1] != arab_str[p2]:
                 return False
             else:
