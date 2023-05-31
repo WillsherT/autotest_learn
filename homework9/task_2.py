@@ -32,7 +32,6 @@
 
 
 import datetime
-import time
 
 
 # Здесь пишем код
@@ -53,15 +52,13 @@ def func_log(file_log='log.txt'):
 
 @func_log()
 def func1():
-    """Выжидаем 5 секунд и здороваемся в консоле"""
-    time.sleep(5)
+    """Здороваемся в консоле"""
     print("Hi!")
 
 
 @func_log(file_log='func2.txt')
 def func2():
-    """Ждем 10 секунд и осыпаем комплиментами в консоле"""
-    time.sleep(10)
+    """Осыпаем комплиментами в консоле"""
     print("You're breathtaking!\n" * 10)
 
 
