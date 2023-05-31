@@ -46,6 +46,7 @@ def func_log(file_log='log.txt'):
                 logg.write(f'{func.__name__} вызвана {start_date.strftime("%d.%m %H:%M:%S")}\n')
             func()
         wrapper.__name__ = func.__name__
+        wrapper.__doc__ = func.__doc__
         return wrapper
     return log
 
@@ -64,3 +65,4 @@ def func2():
 
 func1()
 func2()
+
