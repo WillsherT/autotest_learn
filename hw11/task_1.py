@@ -30,11 +30,12 @@ try:
     sleep(1)
     power_is_people = browser.find_element(By.CSS_SELECTOR, ".tensor_ru-Index__block4-content "
                                                             ".tensor_ru-Index__card-title")
-    if power_is_people.text != 'Сила в людях':
-        raise Exception('Отсутствует новость с заголовком "Сила в людях"')
+    assert power_is_people.text == 'Сила в людях', 'Отсутствует новость с заголовком "Сила в людях"'
     browser.execute_script("return arguments[0].scrollIntoView(true);", power_is_people)
     about = browser.find_element(By.CSS_SELECTOR, ".tensor_ru-link[href='/about']")
+    about_link = about.get_attribute('href')
     about.click()
+    assert browser.current_url == about_link, 'Перешли по неправильной ссылке!'
     sleep(2)
 finally:
     browser.quit()

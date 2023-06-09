@@ -30,12 +30,9 @@ try:
     password_input.send_keys(password)
     next_btns[1].click()
     sleep(6)
-    accordion = browser.find_elements(By.CSS_SELECTOR, ".NavigationPanels-Accordion__title")
-    for title in range(len(accordion)):
-        if accordion[title].text == "Контакты":
-            contacts = accordion[title]
-            contacts.click()
-            break
+    contacts = browser.find_element(By.XPATH, "//span[contains(@class, 'NavigationPanels-Accordion__title') and "
+                                               "contains(text(), 'Контакты')]")
+    contacts.click()
     sleep(1)
     contacts = browser.find_element(By.CSS_SELECTOR, ".NavigationPanels-SubMenu__headTitle")
     contacts.click()
@@ -57,16 +54,14 @@ try:
     send_btn.click()
     sleep(2)
     sent_messages = browser.find_elements(By.CSS_SELECTOR, '.msg-dialogs-item p')
-    if sent_messages[0].text != message:
-        raise Exception('Отправленное сообщение отсутствует в реестре!')
+    assert sent_messages[0].text == message, 'Отправленное сообщение отсутствует в реестре!'
     action_chain = ActionChains(browser)
     action_chain.move_to_element(sent_messages[0])
     action_chain.perform()
     delete_btn = browser.find_element(By.CSS_SELECTOR, ".controls-icon_style-danger")
     delete_btn.click()
     sleep(1)
-    if browser.find_elements(By.CSS_SELECTOR, '.msg-dialogs-item p')[0] == message:
-        raise Exception('Сообщение не удалено!')
+    assert browser.find_elements(By.CSS_SELECTOR, '.msg-dialogs-item p')[0] != message, 'Сообщение не удалено!'
     sleep(2)
 finally:
     browser.quit()

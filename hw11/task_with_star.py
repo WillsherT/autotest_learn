@@ -29,22 +29,19 @@ try:
     sleep(3)
     footer = browser.find_element(By.CSS_SELECTOR, ".sbisru-Footer__container")
     browser.execute_script("return arguments[0].scrollIntoView(true);", footer)
-    footer_links = browser.find_elements(By.CSS_SELECTOR, ".sbisru-Footer__link")
     sleep(2)
-    for link in range(len(footer_links)):
-        if footer_links[link].text == 'Скачать СБИС':
-            footer_links[link].click()
-            break
+    plugin_link = browser.find_element(By.XPATH, "//a[contains(@class, 'sbisru-Footer__link') and "
+                                                 "contains(text(), 'Скачать СБИС')]")
+    plugin_link.click()
     sleep(3)
     plugin = browser.find_element(By.CSS_SELECTOR, '[data-id="plugin"]')
     plugin.click()
     sleep(2)
     download_links = browser.find_elements(By.CSS_SELECTOR, '[data-for="plugin"] .sbis_ru-DownloadNew-loadLink')
     download_links[0].click()
-    sleep(3)
+    sleep(5)
     plugin_file = Path(path, 'sbisplugin-setup-web.exe')
-    if not plugin_file.exists():
-        raise Exception('Плагин не скачался!')
+    assert plugin_file.exists(), 'Плагин не скачался!'
     for file in path.glob('sbisplugin-setup-web.exe'):
         print(f'Размер скачанного файла: {round(int(file.stat().st_size) / 1048576, 2)} мб')
 finally:
