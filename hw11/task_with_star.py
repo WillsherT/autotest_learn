@@ -9,12 +9,12 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import pathlib
+from pathlib import Path
 from time import sleep
 from selenium.webdriver.chrome.options import Options
 
 
-path = pathlib.Path.cwd()
+path = Path.cwd()
 
 options = Options()
 options.add_experimental_option("prefs", {'download.default_directory': str(path), 'safebrowsing.enabled': 'false'})
@@ -42,6 +42,9 @@ try:
     download_links = browser.find_elements(By.CSS_SELECTOR, '[data-for="plugin"] .sbis_ru-DownloadNew-loadLink')
     download_links[0].click()
     sleep(3)
+    plugin_file = Path(path, 'sbisplugin-setup-web.exe')
+    if not plugin_file.exists():
+        raise Exception('Плагин не скачался!')
     for file in path.glob('sbisplugin-setup-web.exe'):
         print(f'Размер скачанного файла: {round(int(file.stat().st_size) / 1048576, 2)} мб')
 finally:
